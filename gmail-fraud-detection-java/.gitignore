@@ -1,0 +1,14 @@
+target/
+.idea/
+*.iml
+.env
+client_secret.json
+credentials*.json
+*.pem
+*.key
+ml-data/raw/*
+ml-data/processed/*
+ml-data/train/*
+ml-data/validation/*
+ml-data/test/*
+!ml-data/**/.gitkeep

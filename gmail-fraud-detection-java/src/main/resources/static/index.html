@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gmail Fraud Detection</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header><h1>Gmail Fraud / Phishing Detection</h1><p>Independent, explainable analysis layer</p></header>
+<main>
+<section class="card">
+<h2>Login</h2>
+<input id="username" placeholder="Username"><input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button><button onclick="register()">Register</button>
+<pre id="authOut"></pre>
+</section>
+<section class="card">
+<h2>Gmail</h2><button onclick="connectGmail()">Connect Gmail</button><button onclick="sync()">Sync</button>
+<pre id="gmailOut"></pre>
+</section>
+<section class="grid">
+<div class="card"><h2>Dashboard</h2><button onclick="dashboard()">Refresh</button><pre id="dashOut"></pre></div>
+<div class="card"><h2>Alerts</h2><button onclick="alerts()">Refresh</button><pre id="alertOut"></pre></div>
+</section>
+</main>
+<script src="/app.js"></script>
+</body></html>

@@ -1,0 +1,25 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: gmail-fraud-mongodb
+    restart: unless-stopped
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+  spring-boot-app:
+    build: .
+    container_name: gmail-fraud-app
+    depends_on: [mongodb]
+    ports: ["8080:8080"]
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/gmail_fraud_detection
+      JWT_SECRET: ${JWT_SECRET:-replace-me}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI:-http://localhost:8080/oauth/callback}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      GOOGLE_OAUTH_ENABLED: ${GOOGLE_OAUTH_ENABLED:-false}
+volumes:
+  mongo-data:
